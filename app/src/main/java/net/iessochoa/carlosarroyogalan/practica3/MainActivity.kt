@@ -32,9 +32,15 @@ class MainActivity : AppCompatActivity() {
         model.getContador().observe(this, Observer<Int>{
                 cont-> binding.tvNumero.text=cont.toString()
         })
+        //Inicia el observador para que cuando haya cambio llame a la función
+        model.getAsteriscos().observe(this, Observer<String>{
+                cont-> binding.tvAsteriscos.text=cont.toString()
+        })
         binding.btSumaUno.setOnClickListener(){
         //Sumamos uno.
             model.sumaUno()
+            //Suma un asterisco
+            model.SumaAsteriscos()
         //Mostramos el valor.
             // binding.tvNumero.text=model.contador.toString()
         }
