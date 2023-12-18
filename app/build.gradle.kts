@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "net.iessochoa.carlosarroyogalan.practica3"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "net.iessochoa.carlosarroyogalan.practica3"
@@ -32,6 +32,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+    //Añadimos al fichero build.grapple
+    buildFeatures{
+        viewBinding = true
     }
 }
 
