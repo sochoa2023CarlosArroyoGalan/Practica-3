@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import net.iessochoa.carlosarroyogalan.practica3.databinding.ActivityMainBinding
 //Nos permite localizar los mensajes de nuestra app en el logcat
 private const val TAG = "practica3"
@@ -23,14 +24,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        /*
         //Cambiaremos el codigo para utilizar los datos de ViewModel, para ello iniciamos el contador. Si es la primera vez, a cero, si es una reconstrucción, lo hará al valor que tenía.
-        binding.tvNumero.text=model.contador.toString()
+        //binding.tvNumero.text=model.contador.toString()
+         */
+        //Iniciamos el observador del contador de tal forma que cada vez que hay un cambio llamará a la funcion definida
+        model.getContador().observe(this, Observer<Int>{
+                cont-> binding.tvNumero.text=cont.toString()
+        })
         binding.btSumaUno.setOnClickListener(){
         //Sumamos uno.
             model.sumaUno()
         //Mostramos el valor.
-            binding.tvNumero.text=model.contador.toString()
+            // binding.tvNumero.text=model.contador.toString()
         }
 
         /*
